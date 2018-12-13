@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  dsservicesgateway:
+    image: ${DOCKER_REGISTRY}dsservicesgateway
+    build:
+      context: .
+      dockerfile: DSServicesGateway/Dockerfile
+    depends_on:
+      - numbergamesprovider
+      - subscriptionservices
+      - funservice
+
+  numbergamesprovider:
+    image: ${DOCKER_REGISTRY}numbergamesprovider
+    build:
+      context: .
+      dockerfile: NumberGamesProvider/Dockerfile
+
+  subscriptionservices:
+    image: ${DOCKER_REGISTRY}subscriptionservices
+    build:
+      context: .
+      dockerfile: SubscriptionServices/Dockerfile
+
+
+  funservice:
+    image: ${DOCKER_REGISTRY}funservice
+    build:
+      context: .
+      dockerfile: FunService/Dockerfile
+

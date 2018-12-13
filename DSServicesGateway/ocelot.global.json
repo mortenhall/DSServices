@@ -1,0 +1,41 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/{game}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "numbergamesprovider",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/numbergames/{game}/{everything}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/subscription/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "subscriptionservices",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/subscription/{everything}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ],
+      "AddClaimsToRequest": {
+        "PlayerId":  "Claims[PlayerId] > value" 
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "SSO Scheme",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "DSContext": "DLO"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://danskespil.dk"
+  }
+}

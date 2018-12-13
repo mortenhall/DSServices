@@ -1,0 +1,16 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/chucknorris/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "funservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/fun/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ]
+}

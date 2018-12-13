@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  dsservicesgateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "12345:80"
+
+  numbergamesprovider:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "3500:80"
+
+  subscriptionservices:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  funservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CHUCKNORRISSERVICE_HOSTURL=https://api.chucknorris.io
+    ports:
+      - "4500:80"
+
