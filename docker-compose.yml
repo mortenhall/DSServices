@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   dsservicesgateway:
-    image: ${DOCKER_REGISTRY}dsservicesgateway
+    image: morthall/dsservicesgateway
     build:
       context: .
       dockerfile: DSServicesGateway/Dockerfile
@@ -12,21 +12,25 @@ services:
       - funservice
 
   numbergamesprovider:
-    image: ${DOCKER_REGISTRY}numbergamesprovider
+    image: morthall/numbergamesprovider
     build:
       context: .
       dockerfile: NumberGamesProvider/Dockerfile
 
   subscriptionservices:
-    image: ${DOCKER_REGISTRY}subscriptionservices
+    image: morthall/subscriptionservices
     build:
       context: .
       dockerfile: SubscriptionServices/Dockerfile
 
 
   funservice:
-    image: ${DOCKER_REGISTRY}funservice
+    image: morthall/funservice
     build:
       context: .
       dockerfile: FunService/Dockerfile
+  
+  redisService: 
+    image: redis:5.0
 
+  
